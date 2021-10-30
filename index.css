@@ -50,8 +50,32 @@ body{
 
     font-weight: bolder;
 }
+.button:hover{
+    cursor: pointer;
+}
 .jogadas{
     font-size: 30px;
+}
+.ganhador{
+    font-size: 40px;
+    text-align: center;
+    font-weight: bolder;
+}
+.buttonEndGame{
+    position: absolute;
+    top: 88%;
+    left: 50%;
+
+    height: 40px;
+    width: 120px;
+    
+    background-color: purple;
+    box-shadow: 1px 1px 5px black;
+    border-radius: 20px;
+
+    font-weight: bolder;
+
+    transform: translateX(-50%);
 }
 @media (max-width: 500px) {
     .casa{
