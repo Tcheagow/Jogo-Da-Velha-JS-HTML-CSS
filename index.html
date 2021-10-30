@@ -7,7 +7,10 @@
     <title>VelhaDisplay</title>
     <link rel="stylesheet" href="./index.css">
 </head>
-<body>
+<body onload="excluirLocalStorage()">
+    <div class="copy">
+        <p class="copyright">By Tcheagow</p>
+    </div>
     <div class="table" id="table">
         <div id="linha" class="linha">
             <div onclick="casas('casa1')" class="casa" id="casa1"></div>
@@ -24,7 +27,7 @@
             <div onclick="casas('casa8')"  class="casa" id="casa8"></div>
             <div onclick="casas('casa9')" class="casa" id="casa9"></div>
         </div>
-        <button class="button">Jogar de novo</button>
+        <button onclick="recomecar()" class="button">Jogar de novo</button>
     </div>
     <script src="./index.js"></script>
 </body>

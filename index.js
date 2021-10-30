@@ -1,154 +1,66 @@
 //var para definir o números de jogadas;
 var jogadas = 0;
 
-//funções para criar o X e a O do jogo
-function criaX(casa) {
-    let x = casa;
-    x.innerHTML = "X";
+// funcção que exclui os localStorage -- principais itens para a lógica funcionar
+function excluirLocalStorage() {
+    localStorage.clear();
 }
-function criaBola(casa) {
-    let o = casa;
-    o.innerHTML = "O";
-}
+//funções para criar "X" e a "O" do jogo
+function criaX(casaClicada, casa) {
+    let addPnessaDiv = casaClicada;
+    let p = document.createElement("p");
+    
+    p.innerHTML = "X";
+    p.className = "jogadas"; 
+    //esse id servirá para excluirmos as jogadas sem atualizar a pagina quando o user clicar no botão de novo game
+    p.id = "p" + casa;
 
+    addPnessaDiv.appendChild(p);
+}
+function criaBola(casaClicada, casa) {
+    let addPnessaDiv = casaClicada;
+    let p = document.createElement("p");
+
+    p.innerHTML = "O";
+    p.className = "jogadas"; 
+        //esse id servirá para excluirmos as jogadas sem atualizar a pagina quando o user clicar no botão de novo game
+    p.id = "p" + casa;
+    
+    addPnessaDiv.appendChild(p); 
+}
+//função principal
 function casas(casa) {
     if(jogadas < 9){
         jogadas ++;
         let casaClicada = document.getElementById(casa);
         
-        if(jogadas % 2 == 0){
-            criaBola(casaClicada);
-         }else{
-             criaX(casaClicada);
-         }
-    }
-}
-//Funções para verificar as posições dos cliques
-/*
-function casa1() {
-    if(jogadas < 9){
-        jogadas++;
-        let casa = document.getElementById("casa1");
-        if(jogadas % 2 == 0){
-           criaBola(casa);
-        }else{
-            criaX(casa);
-        }
-    }else{
-        
-    }
-}
-function casa2() {
-    if(jogadas < 9){
-        jogadas++;
-        let casa = document.getElementById("casa2");
-        
-        if(jogadas % 2 == 0){
-           criaBola(casa);
-        }else{
-            criaX(casa);
-        }
-    }else{
-        
-    }
-}
-function casa3() {
-    if(jogadas < 9){
-        jogadas++;
-        let casa = document.getElementById("casa3");
-        
-        if(jogadas % 2 == 0){
-           criaBola(casa);
-        }else{
-            criaX(casa);
-        }
-    }else{
-        
-    }
-}
-function casa4() {
-    if(jogadas < 9){
-        jogadas++;
-        let casa = document.getElementById("casa4");
-        
-        if(jogadas % 2 == 0){
-           criaBola(casa);
-        }else{
-            criaX(casa);
-        }
-    }else{
-        
-    }
-}
-function casa5() {
-    if(jogadas < 9){
-        jogadas++;
-        let casa = document.getElementById("casa5");
-        
-        if(jogadas % 2 == 0){
-           criaBola(casa);
-        }else{
-            criaX(casa);
-        }
-    }else{
-        
-    }
-}
-function casa6() {
-    if(jogadas < 9){
-        jogadas++;
-        let casa = document.getElementById("casa6");
-        
-        if(jogadas % 2 == 0){
-           criaBola(casa);
-        }else{
-            criaX(casa);
-        }
-    }else{
-        
-    }
-}
-function casa7() {
-    if(jogadas < 9){
-        jogadas++;
-        let casa = document.getElementById("casa7");
-        
-        if(jogadas % 2 == 0){
-           criaBola(casa);
-        }else{
-            criaX(casa);
-        }
-    }else{
-        
-    }
-}
-function casa8() {
-    if(jogadas < 9){
-        jogadas++;
-        let casa = document.getElementById("casa8");
-        
-        if(jogadas % 2 == 0){
-           criaBola(casa);
-        }else{
-            criaX(casa);
-        }
-    }else{
-        
-    }
-}
-function casa9() {
-    if(jogadas < 9){
-        jogadas++;
-        let casa = document.getElementById("casa9");
-        
-        if(jogadas % 2 == 0){
-           criaBola(casa);
-        }else{
-            criaX(casa);
-        }
-    }else{
-        
-    }
-}
+        if(localStorage.getItem(casa) == null){
 
-*/
+            localStorage.setItem(casa, "existe");
+
+            if(jogadas % 2 == 0){
+                criaBola(casaClicada, casa);
+            }else{
+                criaX(casaClicada, casa);
+            }
+        }else{
+            jogadas--;
+        }
+    }else{
+        excluirLocalStorage();
+    }
+}
+//Função para reecomeçar o jogo
+function recomecar() {
+    excluirLocalStorage();
+
+    let armazenaIdsDivs = [];
+
+    //armazenando id das divs
+    for(var i = 0; i < 9; i ++){
+        if(document.getElementById("pcasa"+[i+1]) != null){
+            armazenaIdsDivs[i] = document.getElementById("pcasa"+[i+1]);
+            armazenaIdsDivs[i].parentNode.removeChild(armazenaIdsDivs[i]);
+        }
+    } 
+}
