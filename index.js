@@ -53,7 +53,7 @@ function casas(casa) {
 //Função para reecomeçar o jogo
 function recomecar() {
     excluirLocalStorage();
-
+    jogadas = 0;
     let armazenaIdsDivs = [];
 
     //armazenando id das divs
