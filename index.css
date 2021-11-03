@@ -1,26 +1,28 @@
 body{
     margin: 0;
-    background-color: #5B06D6;
+    background-color: #bababa;
 }
 .table{
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    margin-top: 100px;
-    width: 100%;
+    margin: 100px auto;
+    width: 420px;
+    border: 10px solid #848484;
+    border-radius: 16px;
 }
 .copy{
-    height: 30px;
+    height: 40px;
     background-color: #5B06D6;
 }
 .copyright{
     margin-top: 0;
     text-align: center;
     font-size: 20px;
-
+    font-family: Verdana;
     font-weight: bolder;
-    color: #6E096E;
+    color: #ffffff;
+    padding-top: 6px;
 }
 .linha{
     display: flex;
@@ -30,10 +32,11 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-
-    border: 10px groove rgb(255, 0, 255);
+    border: 10px solid #848484;
+    background-color: #5B06D6;
     width: 120px;
     height: 120px;
+    color: #ffffff;
 }
 .button{
     position: absolute;
@@ -42,9 +45,8 @@ body{
     height: 40px;
     width: 120px;
     
-    background-color: purple;
-    box-shadow: 1px 1px 5px black;
-    border-radius: 20px;
+    background-color: #9a9a9a;
+    border-radius: 4px;
 
     font-weight: bolder;
 }
@@ -52,7 +54,8 @@ body{
     cursor: pointer;
 }
 .jogadas{
-    font-size: 30px;
+    font-size: 50px;
+    font-weight: bolder;
 }
 .ganhador{
     font-size: 40px;
@@ -76,6 +79,9 @@ body{
     transform: translateX(-50%);
 }
 @media (max-width: 500px) {
+    .table{
+        width: 250px;
+    }
     .casa{
         border-width: 2px;
         width: 100px;
